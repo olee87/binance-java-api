@@ -1,22 +1,11 @@
 package com.binance.api.client.domain.event;
 
+import lombok.Data;
+
 /**
  * Dummy type to wrap a listen key from a server response.
  */
+@Data
 public class ListenKey {
-
   private String listenKey;
-
-  public String getListenKey() {
-    return listenKey;
-  }
-
-  public void setListenKey(String listenKey) {
-    this.listenKey = listenKey;
-  }
-
-  @Override
-  public String toString() {
-    return listenKey;
-  }
 }

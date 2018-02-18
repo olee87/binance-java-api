@@ -1,5 +1,7 @@
 package com.binance.api.client.domain.general;
 
+import lombok.Data;
+
 /**
  * Filters define trading rules on a symbol or an exchange. Filters come in two forms: symbol filters and exchange filters.
  *
@@ -13,6 +15,7 @@ package com.binance.api.client.domain.general;
  *
  * The MAX_ALGO_ORDERS filter defines the maximum number of "algo" orders an account is allowed to have open on a symbol. "Algo" orders are STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.
  */
+@Data
 public class SymbolFilter {
 
   // PRICE_FILTER
@@ -64,76 +67,4 @@ public class SymbolFilter {
    * MAX_ALGO_ORDERS filter defines the maximum number of "algo" orders an account is allowed to have open on a symbol. "Algo" orders are STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.
    */
   private String limit;
-
-  public FilterType getFilterType() {
-    return filterType;
-  }
-
-  public void setFilterType(FilterType filterType) {
-    this.filterType = filterType;
-  }
-
-  public String getMinPrice() {
-    return minPrice;
-  }
-
-  public void setMinPrice(String minPrice) {
-    this.minPrice = minPrice;
-  }
-
-  public String getMaxPrice() {
-    return maxPrice;
-  }
-
-  public void setMaxPrice(String maxPrice) {
-    this.maxPrice = maxPrice;
-  }
-
-  public String getTickSize() {
-    return tickSize;
-  }
-
-  public void setTickSize(String tickSize) {
-    this.tickSize = tickSize;
-  }
-
-  public String getMinQty() {
-    return minQty;
-  }
-
-  public void setMinQty(String minQty) {
-    this.minQty = minQty;
-  }
-
-  public String getMaxQty() {
-    return maxQty;
-  }
-
-  public void setMaxQty(String maxQty) {
-    this.maxQty = maxQty;
-  }
-
-  public String getStepSize() {
-    return stepSize;
-  }
-
-  public void setStepSize(String stepSize) {
-    this.stepSize = stepSize;
-  }
-
-  public String getMinNotional() {
-    return minNotional;
-  }
-
-  public void setMinNotional(String minNotional) {
-    this.minNotional = minNotional;
-  }
-
-  public String getLimit() {
-    return limit;
-  }
-
-  public void setLimit(String limit) {
-    this.limit = limit;
-  }
 }

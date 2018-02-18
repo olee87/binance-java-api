@@ -1,9 +1,14 @@
 package com.binance.api.client.domain.market;
 
+import lombok.Getter;
+import lombok.RequiredArgsConstructor;
+
 /**
  * Kline/Candlestick intervals.
  * m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
  */
+@Getter
+@RequiredArgsConstructor
 public enum CandlestickInterval {
   ONE_MINUTE("1m"),
   THREE_MINUTES("3m"),
@@ -22,12 +27,4 @@ public enum CandlestickInterval {
   MONTHLY("1M");
 
   private final String intervalId;
-
-  CandlestickInterval(String intervalId) {
-    this.intervalId = intervalId;
-  }
-
-  public String getIntervalId() {
-    return intervalId;
-  }
 }

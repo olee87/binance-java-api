@@ -1,7 +1,6 @@
 package com.binance.api.client.domain.general;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import lombok.Data;
 
 /**
  * Exchange Filters define trading rules an exchange.
@@ -10,33 +9,10 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  *
  * The MAX_ALGO_ORDERS filter defines the maximum number of "algo" orders an account is allowed to have open on the exchange. "Algo" orders are STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.
  */
+@Data
 public class ExchangeFilter {
 
   private FilterType filterType;
 
   private Integer limit;
-
-  public FilterType getFilterType() {
-    return filterType;
-  }
-
-  public void setFilterType(FilterType filterType) {
-    this.filterType = filterType;
-  }
-
-  public Integer getLimit() {
-    return limit;
-  }
-
-  public void setLimit(Integer limit) {
-    this.limit = limit;
-  }
-
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-        .append("filterType", filterType)
-        .append("limit", limit)
-        .toString();
-  }
 }

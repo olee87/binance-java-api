@@ -4,12 +4,13 @@ import com.binance.api.client.constant.BinanceApiConstants;
 import com.binance.api.client.domain.OrderSide;
 import com.binance.api.client.domain.OrderType;
 import com.binance.api.client.domain.TimeInForce;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import lombok.Getter;
+import lombok.ToString;
 
 /**
  * A trade order to enter or exit a position.
  */
+@Getter @ToString
 public class NewOrder {
 
   /**
@@ -88,17 +89,9 @@ public class NewOrder {
     this.price = price;
   }
 
-  public String getSymbol() {
-    return symbol;
-  }
-
   public NewOrder symbol(String symbol) {
     this.symbol = symbol;
     return this;
-  }
-
-  public OrderSide getSide() {
-    return side;
   }
 
   public NewOrder side(OrderSide side) {
@@ -106,17 +99,9 @@ public class NewOrder {
     return this;
   }
 
-  public OrderType getType() {
-    return type;
-  }
-
   public NewOrder type(OrderType type) {
     this.type = type;
     return this;
-  }
-
-  public TimeInForce getTimeInForce() {
-    return timeInForce;
   }
 
   public NewOrder timeInForce(TimeInForce timeInForce) {
@@ -124,17 +109,9 @@ public class NewOrder {
     return this;
   }
 
-  public String getQuantity() {
-    return quantity;
-  }
-
   public NewOrder quantity(String quantity) {
     this.quantity = quantity;
     return this;
-  }
-
-  public String getPrice() {
-    return price;
   }
 
   public NewOrder price(String price) {
@@ -142,17 +119,9 @@ public class NewOrder {
     return this;
   }
 
-  public String getNewClientOrderId() {
-    return newClientOrderId;
-  }
-
   public NewOrder newClientOrderId(String newClientOrderId) {
     this.newClientOrderId = newClientOrderId;
     return this;
-  }
-
-  public String getStopPrice() {
-    return stopPrice;
   }
 
   public NewOrder stopPrice(String stopPrice) {
@@ -160,26 +129,14 @@ public class NewOrder {
     return this;
   }
 
-  public String getIcebergQty() {
-    return icebergQty;
-  }
-
   public NewOrder icebergQty(String icebergQty) {
     this.icebergQty = icebergQty;
     return this;
   }
 
-  public Long getRecvWindow() {
-    return recvWindow;
-  }
-
   public NewOrder recvWindow(Long recvWindow) {
     this.recvWindow = recvWindow;
     return this;
-  }
-
-  public long getTimestamp() {
-    return timestamp;
   }
 
   public NewOrder timestamp(long timestamp) {
@@ -221,22 +178,5 @@ public class NewOrder {
    */
   public static NewOrder limitSell(String symbol, TimeInForce timeInForce, String quantity, String price) {
     return new NewOrder(symbol, OrderSide.SELL, OrderType.LIMIT, timeInForce, quantity, price);
-  }
-
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-        .append("symbol", symbol)
-        .append("side", side)
-        .append("type", type)
-        .append("timeInForce", timeInForce)
-        .append("quantity", quantity)
-        .append("price", price)
-        .append("newClientOrderId", newClientOrderId)
-        .append("stopPrice", stopPrice)
-        .append("icebergQty", icebergQty)
-        .append("recvWindow", recvWindow)
-        .append("timestamp", timestamp)
-        .toString();
   }
 }

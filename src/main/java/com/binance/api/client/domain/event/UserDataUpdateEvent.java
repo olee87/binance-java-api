@@ -2,6 +2,7 @@ package com.binance.api.client.domain.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+import lombok.Data;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
@@ -13,6 +14,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = UserDataUpdateEventDeserializer.class)
+@Data
 public class UserDataUpdateEvent {
 
   private UserDataUpdateEventType eventType;
@@ -22,38 +24,6 @@ public class UserDataUpdateEvent {
   private AccountUpdateEvent accountUpdateEvent;
 
   private OrderTradeUpdateEvent orderTradeUpdateEvent;
-
-  public UserDataUpdateEventType getEventType() {
-    return eventType;
-  }
-
-  public void setEventType(UserDataUpdateEventType eventType) {
-    this.eventType = eventType;
-  }
-
-  public long getEventTime() {
-    return eventTime;
-  }
-
-  public void setEventTime(long eventTime) {
-    this.eventTime = eventTime;
-  }
-
-  public AccountUpdateEvent getAccountUpdateEvent() {
-    return accountUpdateEvent;
-  }
-
-  public void setAccountUpdateEvent(AccountUpdateEvent accountUpdateEvent) {
-    this.accountUpdateEvent = accountUpdateEvent;
-  }
-
-  public OrderTradeUpdateEvent getOrderTradeUpdateEvent() {
-    return orderTradeUpdateEvent;
-  }
-
-  public void setOrderTradeUpdateEvent(OrderTradeUpdateEvent orderTradeUpdateEvent) {
-    this.orderTradeUpdateEvent = orderTradeUpdateEvent;
-  }
 
   @Override
   public String toString() {

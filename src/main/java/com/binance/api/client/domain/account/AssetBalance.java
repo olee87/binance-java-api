@@ -1,13 +1,13 @@
 package com.binance.api.client.domain.account;
 
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
+import lombok.Data;
 
 /**
  * An asset balance in an Account.
  *
  * @see Account
  */
+@Data
 public class AssetBalance {
 
   /**
@@ -24,37 +24,4 @@ public class AssetBalance {
    * Locked by open orders.
    */
   private String locked;
-
-  public String getAsset() {
-    return asset;
-  }
-
-  public void setAsset(String asset) {
-    this.asset = asset;
-  }
-
-  public String getFree() {
-    return free;
-  }
-
-  public void setFree(String free) {
-    this.free = free;
-  }
-
-  public String getLocked() {
-    return locked;
-  }
-
-  public void setLocked(String locked) {
-    this.locked = locked;
-  }
-
-  @Override
-  public String toString() {
-    return new ToStringBuilder(this, ToStringStyle.SHORT_PREFIX_STYLE)
-        .append("asset", asset)
-        .append("free", free)
-        .append("locked", locked)
-        .toString();
-  }
 }
