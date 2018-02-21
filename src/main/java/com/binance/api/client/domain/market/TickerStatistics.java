@@ -1,13 +1,17 @@
 package com.binance.api.client.domain.market;
 
+import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * 24 hour price change statistics for a ticker.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class TickerStatistics {
 
   /**
@@ -94,4 +98,27 @@ public class TickerStatistics {
    * Total number of trades during the last 24 hours.
    */
   private long count;
+
+@Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("symbol", symbol)
+        .append("priceChange", priceChange)
+        .append("priceChangePercent", priceChangePercent)
+        .append("weightedAvgPrice", weightedAvgPrice)
+        .append("prevClosePrice", prevClosePrice)
+        .append("lastPrice", lastPrice)
+        .append("bidPrice", bidPrice)
+        .append("askPrice", askPrice)
+        .append("openPrice", openPrice)
+        .append("highPrice", highPrice)
+        .append("lowPrice", lowPrice)
+        .append("volume", volume)
+        .append("openTime", openTime)
+        .append("closeTime", closeTime)
+        .append("firstId", firstId)
+        .append("lastId", lastId)
+        .append("count", count)
+        .toString();
+  }
 }

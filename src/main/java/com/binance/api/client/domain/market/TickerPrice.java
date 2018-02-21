@@ -1,11 +1,15 @@
 package com.binance.api.client.domain.market;
 
-import lombok.Data;
+import com.binance.api.client.constant.BinanceApiConstants;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Wraps a symbol and its corresponding latest price.
  */
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class TickerPrice {
 
   /**
@@ -17,4 +21,12 @@ public class TickerPrice {
    * Latest price.
    */
   private String price;
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("symbol", symbol)
+        .append("price", price)
+        .toString();
+  }
 }

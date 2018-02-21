@@ -1,11 +1,15 @@
 package com.binance.api.client.domain.market;
 
-import lombok.Data;
+import com.binance.api.client.constant.BinanceApiConstants;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Represents the best price/qty on the order book for a given symbol.
  */
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class BookTicker {
 
   /**
@@ -32,4 +36,15 @@ public class BookTicker {
    * Ask quantity.
    */
   private String askQty;
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("symbol", symbol)
+        .append("bidPrice", bidPrice)
+        .append("bidQty", bidQty)
+        .append("askPrice", askPrice)
+        .append("askQty", askQty)
+        .toString();
+  }
 }

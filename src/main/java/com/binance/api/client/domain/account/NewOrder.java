@@ -5,12 +5,12 @@ import com.binance.api.client.domain.OrderSide;
 import com.binance.api.client.domain.OrderType;
 import com.binance.api.client.domain.TimeInForce;
 import lombok.Getter;
-import lombok.ToString;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A trade order to enter or exit a position.
  */
-@Getter @ToString
+@Getter
 public class NewOrder {
 
   /**
@@ -178,5 +178,22 @@ public class NewOrder {
    */
   public static NewOrder limitSell(String symbol, TimeInForce timeInForce, String quantity, String price) {
     return new NewOrder(symbol, OrderSide.SELL, OrderType.LIMIT, timeInForce, quantity, price);
+  }
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("symbol", symbol)
+        .append("side", side)
+        .append("type", type)
+        .append("timeInForce", timeInForce)
+        .append("quantity", quantity)
+        .append("price", price)
+        .append("newClientOrderId", newClientOrderId)
+        .append("stopPrice", stopPrice)
+        .append("icebergQty", icebergQty)
+        .append("recvWindow", recvWindow)
+        .append("timestamp", timestamp)
+        .toString();
   }
 }

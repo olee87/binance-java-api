@@ -1,14 +1,18 @@
 package com.binance.api.client.domain.market;
 
+import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * An aggregated trade event for a symbol.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class AggTrade {
 
   @JsonProperty("a")
@@ -31,4 +35,17 @@ public class AggTrade {
 
   @JsonProperty("m")
   private boolean isBuyerMaker;
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("aggregatedTradeId", aggregatedTradeId)
+        .append("price", price)
+        .append("quantity", quantity)
+        .append("firstBreakdownTradeId", firstBreakdownTradeId)
+        .append("lastBreakdownTradeId", lastBreakdownTradeId)
+        .append("tradeTime", tradeTime)
+        .append("isBuyerMaker", isBuyerMaker)
+        .toString();
+  }
 }

@@ -1,11 +1,15 @@
 package com.binance.api.client.domain.account;
 
-import lombok.Data;
+import com.binance.api.client.constant.BinanceApiConstants;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * A deposit address for a given asset.
  */
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class DepositAddress {
 
   private String address;
@@ -15,4 +19,14 @@ public class DepositAddress {
   private String addressTag;
 
   private String asset;
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("address", address)
+        .append("success", success)
+        .append("addressTag", addressTag)
+        .append("asset", asset)
+        .toString();
+  }
 }

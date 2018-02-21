@@ -1,8 +1,12 @@
 package com.binance.api.client.domain.general;
 
+import com.binance.api.client.constant.BinanceApiConstants;
 import com.binance.api.client.exception.BinanceApiException;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
@@ -11,7 +15,7 @@ import java.util.List;
  * https://github.com/binance-exchange/binance-official-api-docs/blob/master/rest-api.md
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class ExchangeInfo {
 
   private String timezone;
@@ -32,5 +36,15 @@ public class ExchangeInfo {
     return symbols.stream().filter(symbolInfo -> symbolInfo.getSymbol().equals(symbol))
         .findFirst()
         .orElseThrow(() -> new BinanceApiException("Unable to obtain information for symbol " + symbol));
+  }
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("timezone", timezone)
+        .append("serverTime", serverTime)
+        .append("rateLimits", rateLimits)
+        .append("symbols", symbols)
+        .toString();
   }
 }

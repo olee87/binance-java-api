@@ -3,7 +3,9 @@ package com.binance.api.client.domain.event;
 import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
@@ -14,7 +16,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonDeserialize(using = UserDataUpdateEventDeserializer.class)
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class UserDataUpdateEvent {
 
   private UserDataUpdateEventType eventType;

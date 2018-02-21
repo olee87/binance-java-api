@@ -1,7 +1,11 @@
 package com.binance.api.client.domain.account;
 
+import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Response returned when placing a new order on the system.
@@ -9,7 +13,7 @@ import lombok.Data;
  * @see NewOrder for the request
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class NewOrderResponse {
 
   /**
@@ -32,4 +36,14 @@ public class NewOrderResponse {
    * Transact time for this order.
    */
   private Long transactTime;
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("symbol", symbol)
+        .append("orderId", orderId)
+        .append("clientOrderId", clientOrderId)
+        .append("transactTime", transactTime)
+        .toString();
+  }
 }

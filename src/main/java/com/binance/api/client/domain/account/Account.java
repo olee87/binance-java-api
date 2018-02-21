@@ -1,7 +1,11 @@
 package com.binance.api.client.domain.account;
 
+import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
@@ -9,7 +13,7 @@ import java.util.List;
  * Account information.
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class Account {
 
   /**
@@ -74,5 +78,20 @@ public class Account {
     emptyBalance.setFree("0");
     emptyBalance.setLocked("0");
     return emptyBalance;
+  }
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("makerCommission", makerCommission)
+        .append("takerCommission", takerCommission)
+        .append("buyerCommission", buyerCommission)
+        .append("sellerCommission", sellerCommission)
+        .append("canTrade", canTrade)
+        .append("canWithdraw", canWithdraw)
+        .append("canDeposit", canDeposit)
+        .append("updateTime", updateTime)
+        .append("balances", balances)
+        .toString();
   }
 }

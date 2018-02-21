@@ -1,13 +1,17 @@
 package com.binance.api.client.domain.event;
 
+import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class AllMarketTickersEvent {
 
   @JsonProperty("e")
@@ -72,4 +76,31 @@ public class AllMarketTickersEvent {
 
   @JsonProperty("n")
   private long totalNumberOfTrades;
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("eventType", eventType)
+        .append("eventTime", eventTime)
+        .append("symbol", symbol)
+        .append("priceChange", priceChange)
+        .append("priceChangePercent", priceChangePercent)
+        .append("weightedAveragePrice", weightedAveragePrice)
+        .append("previousDaysClosePrice", previousDaysClosePrice)
+        .append("currentDaysClosePrice", currentDaysClosePrice)
+        .append("closeTradesQuantity", closeTradesQuantity)
+        .append("bestAskPrice", bestAskPrice)
+        .append("bestAskQuantity", bestAskQuantity)
+        .append("openPrice", openPrice)
+        .append("highPrice", highPrice)
+        .append("lowPrice", lowPrice)
+        .append("totalTradedBaseAssetVolume", totalTradedBaseAssetVolume)
+        .append("totalTradedQuoteAssetVolume", totalTradedQuoteAssetVolume)
+        .append("statisticesOpenTime", statisticesOpenTime)
+        .append("statisticesCloseTime", statisticesCloseTime)
+        .append("firstTradeId", firstTradeId)
+        .append("lastTradeId", lastTradeId)
+        .append("totalNumberOfTrades", totalNumberOfTrades)
+        .toString();
+  }
 }

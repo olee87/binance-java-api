@@ -2,12 +2,12 @@ package com.binance.api.client.domain.account.request;
 
 import com.binance.api.client.constant.BinanceApiConstants;
 import lombok.Getter;
-import lombok.ToString;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Base request parameters for order-related methods.
  */
-@ToString @Getter
+@Getter
 public class OrderRequest {
 
   private final String symbol;
@@ -30,5 +30,14 @@ public class OrderRequest {
   public OrderRequest timestamp(Long timestamp) {
     this.timestamp = timestamp;
     return this;
+  }
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("symbol", symbol)
+        .append("recvWindow", recvWindow)
+        .append("timestamp", timestamp)
+        .toString();
   }
 }

@@ -1,12 +1,16 @@
 package com.binance.api.client.domain.account;
 
+import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Represents an executed trade.
  */
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class Trade {
 
   /**
@@ -49,4 +53,20 @@ public class Trade {
   private boolean bestMatch;
 
   private String orderId;
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("id", id)
+        .append("price", price)
+        .append("qty", qty)
+        .append("commission", commission)
+        .append("commissionAsset", commissionAsset)
+        .append("time", time)
+        .append("buyer", buyer)
+        .append("maker", maker)
+        .append("bestMatch", bestMatch)
+        .append("orderId", orderId)
+        .toString();
+  }
 }

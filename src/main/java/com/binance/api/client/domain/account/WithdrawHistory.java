@@ -1,6 +1,10 @@
 package com.binance.api.client.domain.account;
 
-import lombok.Data;
+import com.binance.api.client.constant.BinanceApiConstants;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
@@ -9,10 +13,18 @@ import java.util.List;
  *
  * @see Withdraw
  */
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class WithdrawHistory {
 
   private List<Withdraw> withdrawList;
 
   private boolean success;
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("withdrawList", withdrawList)
+        .append("success", success)
+        .toString();
+  }
 }

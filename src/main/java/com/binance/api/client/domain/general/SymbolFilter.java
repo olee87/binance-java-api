@@ -1,6 +1,8 @@
 package com.binance.api.client.domain.general;
 
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 /**
  * Filters define trading rules on a symbol or an exchange. Filters come in two forms: symbol filters and exchange filters.
@@ -15,7 +17,7 @@ import lombok.Data;
  *
  * The MAX_ALGO_ORDERS filter defines the maximum number of "algo" orders an account is allowed to have open on a symbol. "Algo" orders are STOP_LOSS, STOP_LOSS_LIMIT, TAKE_PROFIT, and TAKE_PROFIT_LIMIT orders.
  */
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class SymbolFilter {
 
   // PRICE_FILTER

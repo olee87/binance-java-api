@@ -1,10 +1,14 @@
 package com.binance.api.client.domain.event;
 
+import com.binance.api.client.constant.BinanceApiConstants;
 import com.binance.api.client.domain.account.AssetBalance;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
@@ -16,7 +20,7 @@ import java.util.List;
  * @see UserDataUpdateEvent
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class AccountUpdateEvent {
 
   @JsonProperty("e")
@@ -28,4 +32,13 @@ public class AccountUpdateEvent {
   @JsonProperty("B")
   @JsonDeserialize(contentUsing = AssetBalanceDeserializer.class)
   private List<AssetBalance> balances;
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("eventType", eventType)
+        .append("eventTime", eventTime)
+        .append("balances", balances)
+        .toString();
+  }
 }

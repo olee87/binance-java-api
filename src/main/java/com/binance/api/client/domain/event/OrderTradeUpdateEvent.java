@@ -1,9 +1,13 @@
 package com.binance.api.client.domain.event;
 
+import com.binance.api.client.constant.BinanceApiConstants;
 import com.binance.api.client.domain.*;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import lombok.Data;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
+import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
  * Order or trade report update event.
@@ -13,7 +17,7 @@ import lombok.Data;
  * @see UserDataUpdateEvent
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
-@Data
+@Getter @Setter @EqualsAndHashCode
 public class OrderTradeUpdateEvent {
 
   @JsonProperty("e")
@@ -123,4 +127,30 @@ public class OrderTradeUpdateEvent {
    */
   @JsonProperty("t")
   private Long tradeId;
+
+  @Override
+  public String toString() {
+    return new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+        .append("eventType", eventType)
+        .append("eventTime", eventTime)
+        .append("symbol", symbol)
+        .append("newClientOrderId", newClientOrderId)
+        .append("side", side)
+        .append("type", type)
+        .append("timeInForce", timeInForce)
+        .append("originalQuantity", originalQuantity)
+        .append("price", price)
+        .append("executionType", executionType)
+        .append("orderStatus", orderStatus)
+        .append("orderRejectReason", orderRejectReason)
+        .append("orderId", orderId)
+        .append("quantityLastFilledTrade", quantityLastFilledTrade)
+        .append("accumulatedQuantity", accumulatedQuantity)
+        .append("priceOfLastFilledTrade", priceOfLastFilledTrade)
+        .append("commission", commission)
+        .append("commissionAsset", commissionAsset)
+        .append("orderTradeTime", orderTradeTime)
+        .append("tradeId", tradeId)
+        .toString();
+  }
 }

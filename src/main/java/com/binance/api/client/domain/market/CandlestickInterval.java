@@ -7,8 +7,7 @@ import lombok.RequiredArgsConstructor;
  * Kline/Candlestick intervals.
  * m -> minutes; h -> hours; d -> days; w -> weeks; M -> months
  */
-@Getter
-@RequiredArgsConstructor
+@Getter @RequiredArgsConstructor
 public enum CandlestickInterval {
   ONE_MINUTE("1m"),
   THREE_MINUTES("3m"),
